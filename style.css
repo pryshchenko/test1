@@ -51,6 +51,7 @@
  }
 
  .pagination {
+	margin-top: 5px;
 	color: #fff;
 	background-color: rgba(0, 0, 0, 0.95);
 	text-align: center;
@@ -58,6 +59,11 @@
 
  .pagination > span {
 	cursor: pointer;
-	padding: 2px;
-	font-size: 20px;
+	padding: 5px;
+	font-size: 25px;
+	background-color: rgba(0, 0, 0, 0.95);
  }
+
+.active {
+	color: rgb(95, 178, 219);
+}

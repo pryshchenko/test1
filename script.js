@@ -7,14 +7,14 @@
   const pagi = document.querySelector('.pagination')
 
   const videos = [
-    { url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
-    { url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
-    { url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
-    { url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
-    { url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
-    { url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
-    { url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
-    { url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' }
+    { id: 0, url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
+    { id: 1, url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
+    { id: 2, url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
+    { id: 3, url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
+    { id: 4, url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
+    { id: 5, url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
+    { id: 6, url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' },
+    { id: 7, url: '824804225', thumbnail: 'https://i.vimeocdn.com/video/1666894951-d3fc47ae1d5f09250c468b79e4063afa7142163b5734eacb2277ea28acd44b52-d?mw=1000&mh=1000' }
   ]
 
 	function createPreview(video) {
@@ -26,6 +26,10 @@
   }
 
 function openModal(videoId) {
+	if (document.querySelector('.active')) {
+		document.querySelector('.active').classList.remove('active')
+	}
+	document.querySelectorAll('span')[videoId.id].classList.add('active')
 	modal.style.display = 'block'
 		const player = document.createElement('div')
 		player.id = 'player'
@@ -53,13 +57,17 @@ window.addEventListener('keydown', e => {
 	}
 })
 
-  videos.forEach((video, i) => {
+  videos.forEach((video) => {
     preview.append(createPreview(video))
 	const span = document.createElement('span')
 	span.addEventListener('click', () => {
 		document.querySelector('#player').remove()
+		if(document.querySelector('.active')) {
+			document.querySelector('.active').classList.remove('active')
+		}
+		span.classList.add('active')
 		openModal(video)
 	})
- 	span.innerHTML = i + 1
+ 	span.innerHTML = video.id + 1
   	pagi.append(span)
   });
