@@ -67,3 +67,21 @@
 .active {
 	color: rgb(95, 178, 219);
 }
+
+.leftArrow {
+	background: none;
+	width: 150px;
+	position: absolute;
+	top: 400px;
+	left: 300px;
+	cursor: pointer;
+}
+
+.rightArrow {
+	background: none;
+	width: 150px;
+	position: absolute;
+	top: 400px;
+	right: 300px;
+	cursor: pointer;
+}
