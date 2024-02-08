@@ -31,7 +31,7 @@ function createPreview(video) {
 
 function createPagi(video) {
 	const span = document.createElement('span')
-	span.addEventListener('click', () =>openModal(video))
+	span.addEventListener('click', () => openModal(video))
 	span.innerHTML = video.id + 1
 	return span
 }
