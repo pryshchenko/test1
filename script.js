@@ -75,12 +75,14 @@ function openModal(videoId) {
 window.addEventListener('click', e => {
 	if (e.target.className === 'modal') {
 		modal.style.display = 'none'
+		document.querySelector('#player').remove()
 	}
 })
 
 window.addEventListener('keydown', e => {
 	if (e.code === "Escape") {
 		modal.style.display = 'none';
+		document.querySelector('#player').remove()
 	}
 })
 
